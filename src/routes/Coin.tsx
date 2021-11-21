@@ -16,6 +16,7 @@ import Price from "./Price";
 const Title = styled.h1`
   font-size: 48px;
   color: ${(props) => props.theme.accentColor};
+  margin-right: 150px;
 `;
 
 const Loader = styled.span`
@@ -32,7 +33,7 @@ const Container = styled.div`
 const Header = styled.header`
   height: 15vh;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 `;
 
@@ -81,6 +82,12 @@ const Tab = styled.span<{ isActive: boolean }>`
   a {
     display: block;
   }
+`;
+
+const IconBox = styled.img`
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
+  cursor: pointer;
 `;
 
 interface RouteParams {
@@ -171,9 +178,14 @@ function Coin() {
         </title>
       </Helmet>
       <Header>
-        <Title>
-          {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
-        </Title>
+        <Link to={"/"}>
+          <IconBox width="20px" src="/backBtn.png" />
+        </Link>
+        <div>
+          <Title>
+            {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
+          </Title>
+        </div>
       </Header>
       {loading ? (
         <Loader>Loading...</Loader>
